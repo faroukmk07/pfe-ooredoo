@@ -3,23 +3,40 @@ services:
     container_name: postgres-sql-bsn
     image: postgres
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD:
       PGDATA: /var/lib/postgresql/data
       POSTGRES_DB: book_social_network
     volumes:
-      - postgres:/data/postgres
+      - postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
     networks:
       - spring-demo
     restart: unless-stopped
+
   mail-dev:
     container_name: mail-dev-bsn
     image: maildev/maildev
     ports:
       - 1080:1080
       - 1025:1025
+    networks:
+      - spring-demo
+
+  spring-app:
+    container_name: spring-app-bsn
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8082:8082
+    networks:
+      - spring-demo
+    depends_on:
+      - postgres
+      - mail-dev
+
 networks:
   spring-demo:
     driver: bridge
@@ -27,3 +44,4 @@ networks:
 volumes:
   postgres:
     driver: local
+
