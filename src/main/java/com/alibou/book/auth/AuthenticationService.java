@@ -9,7 +9,9 @@ import com.alibou.book.user.TokenRepository;
 import com.alibou.book.user.User;
 import com.alibou.book.user.UserRepository;
 import jakarta.mail.MessagingException;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -55,7 +58,7 @@ public class AuthenticationService {
         sendValidationEmail(user);
     }
 
-    public List<User> listusers()  {
+    public List<User> listusers() throws MessagingException  {
 
         return userRepository.findAll();
     }

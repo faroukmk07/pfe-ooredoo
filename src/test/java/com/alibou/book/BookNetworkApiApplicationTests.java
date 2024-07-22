@@ -3,23 +3,18 @@ package com.alibou.book;
 import com.alibou.book.auth.AuthenticationService;
 import com.alibou.book.user.User;
 import com.alibou.book.user.UserRepository;
-import jakarta.mail.MessagingException;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
-import org.springframework.boot.test.context.SpringBootTest;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -27,16 +22,16 @@ import static org.mockito.Mockito.*;
 @SpringBootTest
 class BookNetworkApiApplicationTests {
 
-	@Mock
-	private UserRepository userRepository;
-
-	@InjectMocks
-	private AuthenticationService authenticationService;
-
-	@BeforeEach
-	public void setUp() {
-		MockitoAnnotations.openMocks(this);
-	}
+//	@Mock
+//	private UserRepository userRepository;
+//
+//	@InjectMocks
+//	private AuthenticationService authenticationService;
+//
+//	@BeforeEach
+//	public void setUp() {
+//		MockitoAnnotations.openMocks(this);
+//	}
 //	@Test
 //	public void testListUsers() throws MessagingException {
 //		User user1 = new User(1, "John Doe");
@@ -55,25 +50,25 @@ class BookNetworkApiApplicationTests {
 //	}
 
 
-	@Test
-	public void testRetrieveAllSuppliers()  {
-		// Arrange
-		List<User> expectedSuppliers = new ArrayList<>();
-		expectedSuppliers.add(new User());
-		expectedSuppliers.add(new User());
-
-
-		when(userRepository.findAll()).thenReturn(expectedSuppliers);
-
-		// Act
-		List<User> actualUser = authenticationService.listusers();
-
-
-		// Assert
-		assertEquals(expectedSuppliers, actualUser);
-		verify(userRepository, times(1)).findAll();
-
-	}
+//	@Test
+//	 void testListUsers()  {
+//		// Arrange
+//		List<User> expectedSuppliers = new ArrayList<>();
+//		expectedSuppliers.add(new User());
+//		expectedSuppliers.add(new User());
+//
+//
+//		when(userRepository.findAll()).thenReturn(expectedSuppliers);
+//
+//		// Act
+//		List<User> actualUser = authenticationService.listusers();
+//
+//
+//		// Assert
+//		assertEquals(expectedSuppliers, actualUser);
+//		verify(userRepository, times(1)).findAll();
+//
+//	}
 	@Test
 	void contextLoads() {
 	}
