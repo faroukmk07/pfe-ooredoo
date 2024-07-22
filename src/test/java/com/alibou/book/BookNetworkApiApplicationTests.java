@@ -15,6 +15,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -36,21 +37,42 @@ class BookNetworkApiApplicationTests {
 	public void setUp() {
 		MockitoAnnotations.openMocks(this);
 	}
+//	@Test
+//	public void testListUsers() throws MessagingException {
+//		User user1 = new User(1, "John Doe");
+//		User user2 = new User(2, "Jane Doe");
+//
+//		when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2));
+//
+//		List<User> users = authenticationService.listusers();
+//
+//		assertNotNull(users);
+//		assertEquals(2, users.size());
+//		assertEquals("John Doe", users.get(0).getName());
+//		assertEquals("Jane Doe", users.get(1).getName());
+//
+//		verify(userRepository, times(1)).findAll();
+//	}
+
+
 	@Test
-	public void testListUsers() throws MessagingException {
-		User user1 = new User(1, "John Doe");
-		User user2 = new User(2, "Jane Doe");
+	public void testRetrieveAllSuppliers()  {
+		// Arrange
+		List<User> expectedSuppliers = new ArrayList<>();
+		expectedSuppliers.add(new User());
+		expectedSuppliers.add(new User());
 
-		when(userRepository.findAll()).thenReturn(Arrays.asList(user1, user2));
 
-		List<User> users = authenticationService.listusers();
+		when(userRepository.findAll()).thenReturn(expectedSuppliers);
 
-		assertNotNull(users);
-		assertEquals(2, users.size());
-		assertEquals("John Doe", users.get(0).getName());
-		assertEquals("Jane Doe", users.get(1).getName());
+		// Act
+		List<User> actualUser = authenticationService.listusers();
 
+
+		// Assert
+		assertEquals(expectedSuppliers, actualUser);
 		verify(userRepository, times(1)).findAll();
+
 	}
 	@Test
 	void contextLoads() {

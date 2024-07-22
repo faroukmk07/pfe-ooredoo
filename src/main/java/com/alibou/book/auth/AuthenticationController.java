@@ -38,7 +38,6 @@ public class AuthenticationController {
 
 
 
-
     @Autowired
     private AuthenticationManager authenticationManager;
 
