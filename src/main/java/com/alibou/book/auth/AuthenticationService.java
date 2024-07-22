@@ -56,7 +56,7 @@ public class AuthenticationService {
         sendValidationEmail(user);
     }
 
-    public List<User> listusers() throws MessagingException  {
+    public List<User> listusers()   {
 
         return userRepository.findAll();
     }
