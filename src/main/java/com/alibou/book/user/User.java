@@ -124,9 +124,6 @@ public class User implements UserDetails, Principal {
         return firstname + " " + lastname;
     }
 
-    public User(Integer id, String name) {
-        this.id = id;
-        this.firstname = name;
-    }
+
 
 }
