@@ -123,4 +123,10 @@ public class User implements UserDetails, Principal {
     public String getFullName() {
         return firstname + " " + lastname;
     }
+
+    public User(Integer id, String name) {
+        this.id = id;
+        this.firstname = name;
+    }
+
 }

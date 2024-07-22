@@ -57,7 +57,7 @@ public class AuthenticationService {
 
     public List<User> listusers() throws MessagingException {
 
-     return    userRepository.findAll();
+        return userRepository.findAll();
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
