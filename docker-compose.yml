@@ -1,12 +1,13 @@
+version: '3.8'
 services:
   postgres:
     container_name: postgres-sql-bsn
     image: postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD:
+      POSTGRES_HOST_AUTH_METHOD: trust
       PGDATA: /var/lib/postgresql/data
-      POSTGRES_DB: book_social_network
+      POSTGRES_DB: farouk
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
@@ -15,14 +16,6 @@ services:
       - spring-demo
     restart: unless-stopped
 
-  mail-dev:
-    container_name: mail-dev-bsn
-    image: maildev/maildev
-    ports:
-      - 1080:1080
-      - 1025:1025
-    networks:
-      - spring-demo
 
   spring-app:
     container_name: spring-app-bsn
@@ -36,12 +29,29 @@ services:
     depends_on:
       - postgres
       - mail-dev
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/farouk
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=
+
+  mail-dev:
+    container_name: mail-dev-bsn
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+    networks:
+      - spring-demo
+
+
+volumes:
+  postgres:
+    driver: local
+
 
 networks:
   spring-demo:
     driver: bridge
 
-volumes:
-  postgres:
-    driver: local
+
 
