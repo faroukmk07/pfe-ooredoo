@@ -10,13 +10,12 @@ COPY . .
 RUN npm run build --prod
 
 # Stage 2: Serve the Angular application using Nginx
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy the built Angular application from the build container to the nginx container
 COPY --from=build /app/dist/book-network-ui /usr/share/nginx/html
 
-COPY nginx.conf /etc/nginx/nginx.conf
-
+COPY /nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
