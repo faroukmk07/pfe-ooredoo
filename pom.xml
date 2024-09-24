@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.alibou</groupId>
 	<artifactId>ooredoo-login</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>book-network-api</name>
 	<description>Spring Boot project for book social network</description>
 	<properties>
@@ -141,11 +141,10 @@
 	</build>
 
 	<distributionManagement>
-		<snapshotRepository>
-			<id>nexus-snapshots</id>
-			<url>http://192.168.1.9:8081/repository/maven-snapshots/</url>
-		</snapshotRepository>
-
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://192.168.1.9:8081/repository/maven-releases/</url>
+		</repository>
 	</distributionManagement>
 
 
