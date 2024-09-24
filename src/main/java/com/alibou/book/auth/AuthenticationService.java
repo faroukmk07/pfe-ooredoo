@@ -61,6 +61,8 @@ public class AuthenticationService {
         return userRepository.findAll();
     }
 
+
+
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
